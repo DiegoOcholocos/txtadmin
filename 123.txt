@@ -9,7 +9,7 @@ INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('7', 'CARLOS', '
 INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('8', 'CORAL', 'GINER LAGUARDA', 'ikis_rojo@hotmail.com', '944364391');
 
 
-SELECT name |' '| lastname AS "Nombre y Apellido completo"
+SELECT name ||' '|| lastname AS "Nombre y Apellido completo"
 FROM user_data 
 WHERE name = 'ARIADNA';
 
