@@ -1,0 +1,71 @@
+CREATE TABLE user_data (id number(6) NOT NULL, name varchar2(25), lastname varchar2(25), mail varchar2(30), phone number(12));
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('1', 'ADRIÁN', 'PLAZA PEGUEROLES', 'iabarcae@yahoo.es', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('2', 'ALBERTO', 'SEMPERE TORTOSA', 'maeillanes@hotmail.com', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('3', 'ALVARO', 'PACHECO RODRIGUEZ', 'osabarca@hotmail.com', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('4', 'ARIADNA', 'ORTEGA GONZÁLEZ', 'cabrigo@garmendia.cl', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('5', 'ARIADNA', 'SÁNCHEZ ARLEGUI', 'Sb.nashxo.sk8@hotmail.com', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('6', 'ARTURO', 'TORMO MARTÍNEZ', 'fran.afull@live.cl', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('7', 'CARLOS', 'AGUADO GONZALEZ', 'carlosaguileram@hotmail.com', '944364391');
+INSERT INTO user_data (id, name, lastname, mail, phone) VALUES ('8', 'CORAL', 'GINER LAGUARDA', 'ikis_rojo@hotmail.com', '944364391');
+
+
+SELECT name |' '| lastname AS "Nombre y Apellido completo"
+FROM user_data 
+WHERE name = 'ARIADNA';
+
+
+CREATE TABLE user (id number(6) NOT NULL, username varchar2(25) not null, password varchar2(25) not null );
+INSERT INTO user (id, username, password) VALUES ('1', 'user1', 'password1');
+INSERT INTO user (id, username, password) VALUES ('2', 'user2', 'password1');
+INSERT INTO user (id, username, password) VALUES ('3', 'user3', 'password1');
+INSERT INTO user (id, username, password) VALUES ('4', 'user4', 'password1');
+INSERT INTO user (id, username, password) VALUES ('5', 'user5', 'password1');
+INSERT INTO user (id, username, password) VALUES ('6', 'user6', 'password1');
+INSERT INTO user (id, username, password) VALUES ('7', 'user7', 'password1');
+INSERT INTO user (id, username, password) VALUES ('8', 'user8', 'password1');
+
+
+INSERT INTO user (id, username, password)
+VALUES (&id, &username, &password);
+
+DELETE FROM user 
+WHERE id = 8;
+
+
+CREATE TABLE quejas (id number(6) NOT NULL, userid number(6) NOT NULL, motivo varchar2(50) not null, contenido varchar2(200) not null );
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('1', '1', 'Motivo1', 'AsuntoImportante1');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('2', '1', 'Motivo2', 'AsuntoImportante2');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('3', '3', 'Motivo3', 'AsuntoImportante3');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('4', '4', 'Motivo4', 'AsuntoImportante4');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('5', '3', 'Motivo5', 'AsuntoImportante5');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('6', '6', 'Motivo6', 'AsuntoImportante6');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('7', '7', 'Motivo7', 'AsuntoImportante7');
+INSERT INTO quejas (id, userid, motivo, contenido) VALUES ('8', '3', 'Motivo8', 'AsuntoImportante8');
+
+
+CREATE TABLE tablaprueba (id number(6) NOT NULL, name varchar2(50));
+INSERT INTO tablaprueba (id, name) VALUES ('1', 'name1');
+INSERT INTO tablaprueba (id, name) VALUES ('2', 'name2');
+INSERT INTO tablaprueba (id, name) VALUES ('3', 'name3');
+INSERT INTO tablaprueba (id, name) VALUES ('4', 'name4');
+INSERT INTO tablaprueba (id, name) VALUES ('5', 'name5');
+INSERT INTO tablaprueba (id, name) VALUES ('6', 'name6');
+INSERT INTO tablaprueba (id, name) VALUES ('7', 'name7');
+INSERT INTO tablaprueba (id, name) VALUES ('8', 'name8');
+
+
+CREATE TRIGGER `crear_data` AFTER INSERT ON `user`
+FOR EACH ROW 
+INSERT INTO 
+user_data(id, name, lastname, mail, phone)
+VALUES(new.id);
+
+
+
+ROLLBACK----------------------------------------------
+SAVEPOINT ABC;
+---EDITA ALGO---
+ROLLBACK TO ABC;
+
+
+

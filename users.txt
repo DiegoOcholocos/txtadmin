@@ -1,0 +1,11 @@
+create user prueba1 IDENTIFIED BY 1234
+default tablespace system
+quota 100M on system;
+
+create user prueba2 IDENTIFIED BY 1234
+default tablespace system
+quota 100M on system;
+
+create user prueba3 IDENTIFIED BY 1234
+default tablespace system
+quota 100M on system;
