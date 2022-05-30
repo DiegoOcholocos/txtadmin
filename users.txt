@@ -9,3 +9,16 @@ quota 100M on system;
 create user prueba3 IDENTIFIED BY 1234
 default tablespace system
 quota 100M on system;
+create role appl_dba;
+GRANT APPL_dba TO prueba1;
+create profile lim_prueba limit connect_ime 45;
+alter user prueba1 profile lim_prueba
+
+create user usr_prueba identified by pwdprueba 
+default tablespace system
+temporary tablespace temp
+profile lim_prueba;
+
+select username, default_tablespace, temporary_tablespace, profile
+from dba_users
+where username = 'prueba1'
